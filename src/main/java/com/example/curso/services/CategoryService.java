@@ -52,6 +52,7 @@ public class CategoryService {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
+	
 	@Transactional
 	public CategoryDTO update(Long id, CategoryDTO dto) {
 		try {
