@@ -2,7 +2,6 @@ package com.example.curso.dto;
 
 import java.io.Serializable;
 
-
 import com.example.curso.entities.Product;
 
 
@@ -30,11 +29,11 @@ public class ProductDTO implements Serializable {
 	}
 	
 	public ProductDTO(Product entity) {
-		this.id = entity.getId();
-		this.name = entity.getName();
-		this.description = entity.getDescription();
-		this.price = entity.getPrice();
-		this.imgUrl = entity.getImgUrl();
+		setId (entity.getId());
+		setName (entity.getName());
+		setDescription (entity.getDescription());
+		setPrice (entity.getPrice());
+		setImgUrl (entity.getImgUrl());
 
 			
 	}
