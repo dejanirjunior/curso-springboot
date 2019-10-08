@@ -29,6 +29,7 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping
 	public ResponseEntity<List<UserDTO>> findAll() {
 		List<UserDTO> list = service.findAll();		
@@ -36,7 +37,7 @@ public class UserResource {
 	
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable Long id){
 	UserDTO dto = service.findById(id);
