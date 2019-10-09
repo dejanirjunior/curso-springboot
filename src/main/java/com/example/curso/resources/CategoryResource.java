@@ -34,12 +34,19 @@ public class CategoryResource {
 	
 	}
 	
+	@GetMapping(value = "/product/{productId}")
+	public ResponseEntity<List<CategoryDTO>> findByProduct(@PathVariable Long productId) {
+		List<CategoryDTO> list = service.findByProduct();		
+		return ResponseEntity.ok().body(list);
+	
+	}
+		
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<CategoryDTO> findById(@PathVariable Long id){
 		CategoryDTO dto = service.findById(id);
 	return ResponseEntity.ok().body(dto);
 	}
-	
+		
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@PostMapping
 	public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryInsertDTO dto) {
