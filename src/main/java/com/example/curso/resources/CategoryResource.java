@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.curso.dto.CategoryDTO;
-import com.example.curso.dto.CategoryInsertDTO;
 import com.example.curso.services.CategoryService;
 
 @RestController
@@ -49,11 +48,11 @@ public class CategoryResource {
 		
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@PostMapping
-	public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryInsertDTO dto) {
-		CategoryDTO newDto =  service.insert(dto);
+	public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO dto) {
+		dto =  service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(newDto.getId()).toUri();
-		return ResponseEntity.created(uri).body(newDto);
+				.buildAndExpand(dto.getId()).toUri();
+		return ResponseEntity.created(uri).body(dto);
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")

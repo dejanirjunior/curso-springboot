@@ -3,7 +3,6 @@ package com.example.curso.services;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.curso.dto.CategoryDTO;
-import com.example.curso.dto.CategoryInsertDTO;
 import com.example.curso.entities.Category;
 import com.example.curso.entities.Product;
 import com.example.curso.repositories.CategoryRepository;
@@ -44,7 +42,7 @@ public class CategoryService {
 		return new CategoryDTO(entity);
 	}
 	
-	public CategoryDTO insert(CategoryInsertDTO dto) {
+	public CategoryDTO insert(CategoryDTO dto) {
 		Category entity = dto.toEntity();
 		entity = repository.save(entity);
 		return new CategoryDTO(entity);
